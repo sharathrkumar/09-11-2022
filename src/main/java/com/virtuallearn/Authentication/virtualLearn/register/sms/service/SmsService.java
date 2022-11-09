@@ -22,7 +22,6 @@ public class SmsService {
         Twilio.init(ACCOUNT_SID, AUTH_ID);
     }
     public long sendOtp(MobileAuth mobileAuth, String twoFaCode) {
-        System.out.println(mobileAuth.getMobileNumber());
         Message.creator(new PhoneNumber(mobileAuth.getMobileNumber()), new PhoneNumber("+19896822968"),
                     "Your Two Factor Authentication code is: " + twoFaCode).create();
         return dataAccessService.saveOtp(mobileAuth.getMobileNumber(),twoFaCode);
